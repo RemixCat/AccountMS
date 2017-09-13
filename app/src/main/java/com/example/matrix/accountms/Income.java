@@ -1,0 +1,15 @@
+package com.example.matrix.accountms;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class Income extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_income);
+
+    }
+
+}
