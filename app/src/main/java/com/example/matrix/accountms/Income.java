@@ -14,15 +14,24 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Calendar;
 
+import entity.Tb_inaccount;
+
 public class Income extends AppCompatActivity {
+    private EditText money;
+    private EditText time;
+    private EditText type;
+    private EditText payer;
+    private EditText remark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,4 +87,33 @@ public class Income extends AppCompatActivity {
     }
 
 
+//    添加收入
+    public void addIncome(){
+        Button btnAdd = (Button)this.findViewById(R.id.btn_add_income);
+        Button btnDefault = (Button)this.findViewById(R.id.btn_default_income);
+        money = (EditText) this.findViewById(R.id.income_money);
+        time = (EditText) this.findViewById(R.id.getdatetime);
+        type = (EditText) this.findViewById(R.id.income_money);
+        payer = (EditText) this.findViewById(R.id.income_money);
+        remark = (EditText) this.findViewById(R.id.income_money);
+
+        Tb_inaccount income = new Tb_inaccount();
+
+        //添加收入记录
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+//        取消按钮，关闭当前的页面
+        btnDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
 }
