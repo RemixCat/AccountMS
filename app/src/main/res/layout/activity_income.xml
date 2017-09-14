@@ -2,7 +2,7 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -29,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="金额:"
-                android:textSize="17dp" />
+                android:textSize="17dp"
+                android:textColor="#000"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,8 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
+                android:textColor="#000"
                 android:text="时间:"/>
+
             <EditText
+                android:id="@+id/getdatetime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -69,12 +73,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
+                android:textColor="#000"
                 android:text="类别:"/>
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:spinnerMode="dropdown"
+                android:entries="@array/arraytypevalues"
+                android:paddingLeft="20dip"
                 ></Spinner>
         </LinearLayout>
         <LinearLayout
@@ -89,12 +94,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
+                android:textColor="#000"
                 android:text="付款方:"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:layout_marginLeft="10dp"
+                android:textColor="#000"
                 android:background="@drawable/hyf_edittext"/>
         </LinearLayout>
         <LinearLayout
@@ -109,13 +116,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
+                android:textColor="#000"
                 android:text="备注:"/>
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dip"
+                android:enabled="true"
+                android:gravity="top"
+                android:maxLength="30"
+                android:maxLines="5"
                 android:inputType="text"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/hyf_edittext"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/hyflinearlayout5"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="确定"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="取消"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
