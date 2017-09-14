@@ -6,17 +6,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import entity.DaoMaster;
 import entity.DaoSession;
-import entity.Tb_flag;
-import entity.Tb_flagDao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //OnClickListener设置底部图片的点击事件
     //OnPageChangeListener设置图片的滑动事件
     private LocalActivityManager manager;
-    private MyViewPageAdapter viewPageAdapter;
+    private Home_ViewPageAdapter viewPageAdapter;
     private View.OnClickListener clickListener;
     private ViewPager.OnPageChangeListener pageChangeListener;
 
@@ -148,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         mViews.add(getView("QualityActivity3", intent));
 
 
-        viewPageAdapter = new MyViewPageAdapter(mViews);
+        viewPageAdapter = new Home_ViewPageAdapter(mViews);
         vp.setAdapter(viewPageAdapter);
 
     }

@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import java.io.Serializable;
 import java.util.List;
 
-public class MyViewPageAdapter extends PagerAdapter implements Serializable {
+public class Home_ViewPageAdapter extends PagerAdapter implements Serializable {
     private List<View> views;
 
-    public MyViewPageAdapter(List<View> views) {
+    public Home_ViewPageAdapter(List<View> views) {
         this.views = views;
     }
 
