@@ -19,6 +19,7 @@
         <activity android:name=".Activity_Home" />
         <activity android:name=".Activity_note" />
         <activity android:name=".Activity_set"></activity>
+        <activity android:name=".Activity_new_note"></activity>
     </application>
 
 </manifest>
