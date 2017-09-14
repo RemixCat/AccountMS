@@ -4,12 +4,14 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 /**
  * Created by ios06 on 17/9/13.
  */
 
 @Entity
-public class Tb_flag {
+public class Tb_flag implements Serializable{
 
     @Id(autoincrement = true)
     private long _id;
