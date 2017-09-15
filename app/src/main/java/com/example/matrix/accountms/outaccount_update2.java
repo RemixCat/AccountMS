@@ -81,7 +81,7 @@ public class outaccount_update2 extends AppCompatActivity {
             time.setText(tb.getTime()+"");
             type = (Spinner)findViewById(R.id.type);
             Resources res=getResources();
-            String[] citys=res.getStringArray(R.array.type);
+            String[] citys=res.getStringArray(R.array.arraypaytype);
             ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,citys);
             type.setAdapter(adapter2);
             for(int i=0;i<adapter2.getCount();i++){

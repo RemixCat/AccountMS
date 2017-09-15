@@ -2,6 +2,8 @@
 <resources>
     <string-array name="arraytypevalues">
         <item>工资</item>
+        <item>欠款</item>
+        <item>分红</item>
         <item>其他</item>
     </string-array>
     <string-array name="arraypaytype">

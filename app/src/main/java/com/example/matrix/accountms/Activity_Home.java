@@ -34,7 +34,7 @@ public class Activity_Home extends Activity {
     private TextView mony_in;
     private TextView mony_out;
     private LinearLayout addincomeli; //添加收入
-    private LinearLayout adddisbursement; //添加支出
+    private LinearLayout adddisbursementli; //添加支出
     private LinearLayout Controlincomeli;//收入管理
     private LinearLayout Controldisbursementli;//支出管理
 
@@ -99,8 +99,8 @@ public class Activity_Home extends Activity {
         });
 
         //添加支出
-        adddisbursement = (LinearLayout)findViewById(R.id.adddisbursementli);
-        adddisbursement.setOnClickListener(new View.OnClickListener() {
+        adddisbursementli = (LinearLayout)findViewById(R.id.adddisbursementli);
+        adddisbursementli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent itent =new Intent(Activity_Home.this,Outcome.class);
