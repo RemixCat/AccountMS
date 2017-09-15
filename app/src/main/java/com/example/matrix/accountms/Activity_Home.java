@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,10 +31,10 @@ public class Activity_Home extends Activity {
     DaoSession session;
     private TextView mony_in;
     private TextView mony_out;
-    private LayoutInflater addincomeli; //添加收入
-    private LayoutInflater adddisbursement; //添加支出
-    private LayoutInflater Controlincomeli;//收入管理
-    private LayoutInflater Controldisbursementli;//支出管理
+    private LinearLayout addincomeli; //添加收入
+    private LinearLayout adddisbursement; //添加支出
+    private LinearLayout Controlincomeli;//收入管理
+    private LinearLayout Controldisbursementli;//支出管理
 
 
     @Override
@@ -60,6 +61,7 @@ public class Activity_Home extends Activity {
 
         mony_in.setText(getallin());
         mony_out.setText(getallout());
+        //呵呵
 
     }
 

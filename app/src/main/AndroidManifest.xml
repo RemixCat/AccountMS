@@ -20,6 +20,11 @@
         <activity android:name=".Activity_note" />
         <activity android:name=".Activity_set"></activity>
         <activity android:name=".Activity_new_note"></activity>
+        <activity android:name=".IncomeList"></activity>
+        <activity android:name=".update_Income"></activity>
+        <activity android:name=".update_income2"></activity>
+        <activity android:name=".outaccount_update"></activity>
+        <activity android:name=".outaccount_update2"></activity>
     </application>
 
 </manifest>

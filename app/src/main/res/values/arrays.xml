@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type">
+        <item>工资</item>
+        <item>欠款</item>
+        <item>分红</item>
+
+
+
+    </string-array>
+
+
+
+</resources>
