@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">AccountMS</string>
+    <string name="app_name">个人财务管理</string>
     <string name="title_activity_outcome">Outcome</string>
 </resources>
