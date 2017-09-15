@@ -1,19 +1,18 @@
 package com.example.matrix.accountms;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
 
-import entity.DAOManager;
-import entity.DaoSession;
-import entity.Tb_pwd;
+import entity.*;
 
-public class Activity_set extends AppCompatActivity {
+public class Sysset extends Activity {
     EditText txtpwd;// 创建EditText对象
     Button btnSet, btnsetCancel;// 创建两个Button对象
     private DaoSession session;
@@ -26,9 +25,9 @@ public class Activity_set extends AppCompatActivity {
 
         txtpwd = (EditText) findViewById(R.id.txtPwd);// 获取密码文本框
         btnSet = (Button) findViewById(R.id.btnSet);// 获取设置按钮
-        // btnsetCancel = (Button) findViewById(R.id.btnsetCancel);// 获取取消按钮
-        session = new DAOManager().getDaoSession(Activity_set.this);
-        btnSet.setOnClickListener(new View.OnClickListener() {// 为设置按钮添加监听事件
+       // btnsetCancel = (Button) findViewById(R.id.btnsetCancel);// 获取取消按钮
+        session = new DAOManager().getDaoSession(Sysset.this);
+        btnSet.setOnClickListener(new OnClickListener() {// 为设置按钮添加监听事件
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
@@ -46,7 +45,7 @@ public class Activity_set extends AppCompatActivity {
                     session.insert(pwd);
 
                 }
-                Toast.makeText(Activity_set.this, "〖密码〗设置成功！", Toast.LENGTH_SHORT)
+                Toast.makeText(Sysset.this, "〖密码〗设置成功！", Toast.LENGTH_SHORT)
                         .show();
 
 
