@@ -2,8 +2,11 @@ package com.example.matrix.accountms;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,10 +33,10 @@ public class Activity_Home extends Activity {
     DaoSession session;
     private TextView mony_in;
     private TextView mony_out;
-    private LayoutInflater addincomeli; //添加收入
-    private LayoutInflater adddisbursement; //添加支出
-    private LayoutInflater Controlincomeli;//收入管理
-    private LayoutInflater Controldisbursementli;//支出管理
+    private LinearLayout addincomeli; //添加收入
+    private LinearLayout adddisbursement; //添加支出
+    private LinearLayout Controlincomeli;//收入管理
+    private LinearLayout Controldisbursementli;//支出管理
 
 
     @Override
@@ -60,6 +63,41 @@ public class Activity_Home extends Activity {
 
         mony_in.setText(getallin());
         mony_out.setText(getallout());
+
+
+        //收入管理
+        Controlincomeli = (LinearLayout)findViewById(R.id.Controlincomeli);
+        Controlincomeli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itent =new Intent(Activity_Home.this,IncomeList.class);
+                startActivity(itent);
+
+            }
+        });
+
+        //支出管理
+        Controldisbursementli = (LinearLayout)findViewById(R.id.Controldisbursementli);
+        Controldisbursementli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itent =new Intent(Activity_Home.this,outaccount_update.class);
+                startActivity(itent);
+
+            }
+        });
+
+        //添加收入
+        addincomeli = (LinearLayout)findViewById(R.id.addincomeli);
+        addincomeli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itent =new Intent(Activity_Home.this,Income.class);
+                startActivity(itent);
+
+            }
+        });
+
 
     }
 
@@ -232,7 +270,7 @@ public class Activity_Home extends Activity {
         }else {
 
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("list_cont", tblist.get(0).getFlag());
+            map.put("list_cont", tblist.get(tblist.size()-1).getFlag());
             map.put("list_date", "最近");
             list.add(map);
 
