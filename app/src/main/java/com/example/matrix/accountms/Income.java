@@ -13,10 +13,13 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,21 +27,30 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.Calendar;
 
+import entity.DAOManager;
+import entity.DaoSession;
 import entity.Tb_inaccount;
+import entity.Tb_inaccountDao;
 
 public class Income extends AppCompatActivity {
     private EditText money;
     private EditText time;
-    private EditText type;
+    private Spinner type;
+    private String typer2;
     private EditText payer;
     private EditText remark;
+//    private DaoSession session = DAOManager.getDaoSession(this);
+//    private Tb_inaccountDao income = session.getTb_inaccountDao();
+//    private Tb_inaccount tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏 第一种方法
         setContentView(R.layout.activity_income);
 
-        datePicker();
+        datePicker();//生成时间拾取器
+        addIncome();//相关事件
     }
 
     //定义时间拾取器
@@ -91,19 +103,43 @@ public class Income extends AppCompatActivity {
     public void addIncome(){
         Button btnAdd = (Button)this.findViewById(R.id.btn_add_income);
         Button btnDefault = (Button)this.findViewById(R.id.btn_default_income);
+
         money = (EditText) this.findViewById(R.id.income_money);
         time = (EditText) this.findViewById(R.id.getdatetime);
-        type = (EditText) this.findViewById(R.id.income_money);
-        payer = (EditText) this.findViewById(R.id.income_money);
-        remark = (EditText) this.findViewById(R.id.income_money);
+        type = (Spinner) this.findViewById(R.id.income_type);
+        payer = (EditText) this.findViewById(R.id.income_payer);
+        remark = (EditText) this.findViewById(R.id.income_remark);
 
-        Tb_inaccount income = new Tb_inaccount();
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                typer2 = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         //添加收入记录
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                try{
+//                    tb = new Tb_inaccount();
+//                    tb.setMoney(Double.valueOf(money.getText().toString()));
+//                    tb.setTime(time.getText().toString());
+//                    tb.setHandler(payer.getText().toString());
+//                    tb.setType(typer2);
+//                    tb.setMark(remark.getText().toString());
+//                    income.insert(tb);
+//
+//                    session.insert(income);
+                }
+                catch(Exception ex){
+                    showT(ex.getStackTrace().toString());
+                }
             }
         });
 
@@ -111,9 +147,13 @@ public class Income extends AppCompatActivity {
         btnDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Income.this.finish();
             }
         });
 
+    }
+    
+    public void showT(String str){
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 }

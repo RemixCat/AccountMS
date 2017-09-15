@@ -26,6 +26,7 @@
         <activity android:name=".update_income2"></activity>
         <activity android:name=".outaccount_update"></activity>
         <activity android:name=".outaccount_update2"></activity>
+        <activity android:name=".Income"></activity>
     </application>
 
 </manifest>
