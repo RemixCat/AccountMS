@@ -67,7 +67,7 @@ public class Income extends AppCompatActivity {
         picker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-                getTime.setText(i+":"+i1+":"+i2);
+                getTime.setText(i+":"+(i1+1)+":"+i2);
                 getTime.setGravity(Gravity.CENTER);
                 dialog.cancel();
             }

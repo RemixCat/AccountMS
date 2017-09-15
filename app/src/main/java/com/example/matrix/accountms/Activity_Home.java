@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.greenrobot.greendao.annotation.OrderBy;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +40,11 @@ public class Activity_Home extends Activity {
     private LinearLayout Controlincomeli;//收入管理
     private LinearLayout Controldisbursementli;//支出管理
 
+
+    protected void onResume() {
+        super.onResume();
+        onCreate(null);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,11 +175,15 @@ public class Activity_Home extends Activity {
 
 
         session = DAOManager.getDaoSession(Activity_Home.this);
+
+
         List<Tb_inaccount> tblist  = session.loadAll(Tb_inaccount.class);
 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-        if(tblist.size() == 0){
+        int size = tblist.size();
+
+        if(size == 0){
 
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("list_cont", "");
@@ -181,9 +192,9 @@ public class Activity_Home extends Activity {
 
 
         }
-        if (tblist.size()<3){
+        if (size <3){
 
-            for (int i =0;i<tblist.size();i++){
+            for (int i =size-1;i>=0;i--){
 
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("list_cont", "+"+tblist.get(i).getMoney());
@@ -194,7 +205,7 @@ public class Activity_Home extends Activity {
 
         }else {
 
-            for (int i =0;i<3;i++){
+            for (int i =size-1;i>=size-3;i--){
 
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("list_cont", "+"+tblist.get(i).getMoney());
@@ -221,7 +232,9 @@ public class Activity_Home extends Activity {
 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-        if(tblist.size() == 0){
+        int size = tblist.size();
+
+        if(size == 0){
 
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("list_cont", "");
@@ -230,12 +243,12 @@ public class Activity_Home extends Activity {
 
 
         }
-        if (tblist.size()<3){
+        if (size<3){
 
-            for (int i =0;i<tblist.size();i++){
+            for (int i =size-1;i>=0;i--){
 
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("list_cont", "+"+tblist.get(i).getMoney());
+                map.put("list_cont", "-"+tblist.get(i).getMoney());
                 map.put("list_date", tblist.get(i).getTime());
                 list.add(map);
 
@@ -243,10 +256,10 @@ public class Activity_Home extends Activity {
 
         }else {
 
-            for (int i =0;i<3;i++){
+            for (int i =size-1;i>=size-3;i--){
 
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("list_cont", "+"+tblist.get(i).getMoney());
+                map.put("list_cont", "-"+tblist.get(i).getMoney());
                 map.put("list_date", tblist.get(i).getTime());
                 list.add(map);
 

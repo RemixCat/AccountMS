@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Date;
@@ -37,12 +38,10 @@ public class Outcome extends AppCompatActivity {
     private Spinner out_type;
     private String out_typestr;
 
-    private Button btnAdd;
-    private Button btnDefault;
 
     private DaoSession session;
-    private Tb_outaccountDao outcomedao;
-    private Tb_outaccount outcome;
+    private Tb_outaccountDao outcome;
+    private Tb_outaccount tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +80,7 @@ public class Outcome extends AppCompatActivity {
         picker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-                out_time.setText(i+":"+i1+":"+i2);
+                out_time.setText(i+":"+ (i1+1) +":"+i2);
                 out_time.setGravity(Gravity.CENTER);
                 dialog.cancel();
             }
@@ -98,10 +97,13 @@ public class Outcome extends AppCompatActivity {
 
 //    添加事件
     public void outComeMethod(){
-        btnAdd = (Button)this.findViewById(R.id.btn_add_outcome);
-        btnDefault = (Button)this.findViewById(R.id.btn_default_outcome);
-        out_type = (Spinner)this.findViewById(R.id.outcome_type);
+        Button btnAdd = (Button)this.findViewById(R.id.btn_add_outcome);
+        Button btnDefault = (Button)this.findViewById(R.id.btn_default_outcome);
 
+        out_type = (Spinner)this.findViewById(R.id.outcome_type);
+        out_address = (EditText)this.findViewById(R.id.outcome_address);
+        out_remark = (EditText) this.findViewById(R.id.outcome_remark);
+        out_money = (EditText) this.findViewById(R.id.outcome_money);
         out_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -119,16 +121,16 @@ public class Outcome extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     session = DAOManager.getDaoSession(Outcome.this);
-                    outcomedao = session.getTb_outaccountDao();
+                    outcome = session.getTb_outaccountDao();
 
-                    outcome = new Tb_outaccount();
-                    outcome.setMoney(Double.valueOf(out_money.getText().toString()));
-                    outcome.setTime(out_time.getText().toString());
-                    outcome.setType(out_typestr);
-                    outcome.setAddress(out_address.getText().toString());
-                    outcome.setMark(out_remark.getText().toString());
+                    tb = new Tb_outaccount();
+                    tb.setMoney(Double.valueOf(out_money.getText().toString()));
+                    tb.setTime(out_time.getText().toString());
+                    tb.setType(out_typestr);
+                    tb.setAddress(out_address.getText().toString());
+                    tb.setMark(out_remark.getText().toString());
+                    outcome.insert(tb);
 
-                    outcomedao.insert(outcome);
                     Outcome.this.finish();
                 }
                 catch(Exception ex){

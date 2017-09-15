@@ -30,7 +30,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/seet"/>
+            android:src="@drawable/icon_setpwd"/>
 
         <TextView
             android:paddingLeft="20dp"
@@ -53,10 +53,11 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/seet"/>
+            android:src="@drawable/icon_help"/>
 
         <TextView
             android:paddingLeft="20dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="帮助"
@@ -76,7 +77,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/seet"/>
+            android:src="@drawable/icon_about"/>
 
         <TextView
             android:paddingLeft="20dp"
