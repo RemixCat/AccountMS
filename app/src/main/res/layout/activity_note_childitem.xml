@@ -4,5 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/tvnote"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvnoteid"
+        android:textColor="#778899"
+        android:visibility ="gone"
+        />
 </LinearLayout>

@@ -4,17 +4,15 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
-import java.io.Serializable;
-
 /**
- * Created by ios06 on 17/9/13.
+ * Created by ios06 on 17/9/14.
  */
 
 @Entity
-public class Tb_flag implements Serializable{
+public class Tb_flag {
 
-    @Id(autoincrement = true)
-    private long _id;
+    @Id(autoincrement=true)
+    private  long _id;
     private String flag;
     public String getFlag() {
         return this.flag;
@@ -35,10 +33,5 @@ public class Tb_flag implements Serializable{
     }
     @Generated(hash = 1347222124)
     public Tb_flag() {
-    }
-
-    public Tb_flag(String flag) {
-
-        this.flag = flag;
     }
 }

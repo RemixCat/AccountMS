@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="支出修改"
+        android:textSize="20sp"
+        android:background="#d9d9d9"
+        android:paddingTop="18px"
+        android:paddingBottom="18px"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/hyflinearlayout1"
+            android:paddingTop="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金额:"
+                android:textSize="17dp" />
+            <EditText
+                android:id="@+id/money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/updateeditext"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hyflinearlayout1"
+            android:paddingTop="20dp"
+            android:id="@+id/hyflinearlayout2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="时间:"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间"
+                android:textSize="17dp"
+                android:id="@+id/showtime"/>
+
+            <!--<DatePicker-->
+            <!--android:datePickerMode="spinner"-->
+            <!--android:id="@+id/dpPicker"-->
+            <!--android:calendarViewShown="false"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+
+            <!--<TimePicker-->
+            <!--android:id="@+id/tpPicker"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hyflinearlayout2"
+            android:paddingTop="20dp"
+            android:id="@+id/hyflinearlayout3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="类别:"/>
+            <Spinner
+
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"   ></Spinner>
+        </LinearLayout>
+        <FrameLayout
+
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hyflinearlayout3"
+            android:paddingTop="20dp"
+            android:id="@+id/hyflinearlayout4">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+
+                android:text="支出地:"/>
+            <EditText
+                android:id="@+id/per"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginLeft="68dp"
+                android:background="@drawable/updateeditext"/>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hyflinearlayout4"
+            android:paddingTop="20dp"
+            android:id="@+id/hyflinearlayout5">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="备注:"/>
+            <EditText
+                android:id="@+id/remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/updateeditext"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/hyflinearlayout5"
+            android:paddingTop="20dp"
+            android:id="@+id/hyflinearlayout6">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="修改"
+                android:id="@+id/update"
+
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="删除"
+                android:id="@+id/delete"
+
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
