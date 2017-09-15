@@ -2,10 +2,14 @@ package com.example.matrix.accountms;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,10 +34,10 @@ public class Activity_Home extends Activity {
     DaoSession session;
     private TextView mony_in;
     private TextView mony_out;
-    private LayoutInflater addincomeli; //添加收入
-    private LayoutInflater adddisbursement; //添加支出
-    private LayoutInflater Controlincomeli;//收入管理
-    private LayoutInflater Controldisbursementli;//支出管理
+    private LinearLayout addincomeli; //添加收入
+    private LinearLayout adddisbursement; //添加支出
+    private LinearLayout Controlincomeli;//收入管理
+    private LinearLayout Controldisbursementli;//支出管理
 
 
     @Override
@@ -60,6 +64,8 @@ public class Activity_Home extends Activity {
 
         mony_in.setText(getallin());
         mony_out.setText(getallout());
+
+        addIncomeMethod();//添加收入
 
     }
 
@@ -242,5 +248,17 @@ public class Activity_Home extends Activity {
 
 
         return list;
+    }
+
+//    添加收入 hanyf
+    public void addIncomeMethod(){
+        addincomeli = (LinearLayout)this.findViewById(R.id.addincomeli);
+        addincomeli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Home.this,Income.class);
+                Activity_Home.this.startActivity(intent);
+            }
+        });
     }
 }

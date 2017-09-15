@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/arraytypevalues"
                 android:paddingLeft="20dip"
+                android:id="@+id/income_type"
                 ></Spinner>
         </LinearLayout>
         <LinearLayout
