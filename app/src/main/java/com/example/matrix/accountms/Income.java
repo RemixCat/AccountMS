@@ -28,6 +28,7 @@ import java.sql.Time;
 import java.util.Calendar;
 
 import entity.DAOManager;
+import entity.DaoMaster;
 import entity.DaoSession;
 import entity.Tb_inaccount;
 import entity.Tb_inaccountDao;
@@ -39,9 +40,9 @@ public class Income extends AppCompatActivity {
     private String typer2;
     private EditText payer;
     private EditText remark;
-//    private DaoSession session = DAOManager.getDaoSession(this);
-//    private Tb_inaccountDao income = session.getTb_inaccountDao();
-//    private Tb_inaccount tb;
+    private DaoSession session;
+    private Tb_inaccountDao income;
+    private Tb_inaccount tb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,6 @@ public class Income extends AppCompatActivity {
         DatePicker picker = new DatePicker(this);
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(picker);
-        final Date date = new Date(System.nanoTime());
-
         Calendar calendar = Calendar.getInstance();
 //        初始化DatePicker控件
         picker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
@@ -127,15 +126,17 @@ public class Income extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-//                    tb = new Tb_inaccount();
-//                    tb.setMoney(Double.valueOf(money.getText().toString()));
-//                    tb.setTime(time.getText().toString());
-//                    tb.setHandler(payer.getText().toString());
-//                    tb.setType(typer2);
-//                    tb.setMark(remark.getText().toString());
-//                    income.insert(tb);
-//
-//                    session.insert(income);
+                    session = DAOManager.getDaoSession(Income.this);
+                    income = session.getTb_inaccountDao();
+
+                    tb = new Tb_inaccount();
+                    tb.setMoney(Double.valueOf(money.getText().toString()));
+                    tb.setTime(time.getText().toString());
+                    tb.setHandler(payer.getText().toString());
+                    tb.setType(typer2);
+                    tb.setMark(remark.getText().toString());
+                    income.insert(tb);
+                    Income.this.finish();
                 }
                 catch(Exception ex){
                     showT(ex.getStackTrace().toString());
