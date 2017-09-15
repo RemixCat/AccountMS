@@ -98,6 +98,16 @@ public class Activity_Home extends Activity {
             }
         });
 
+        //添加支出
+        adddisbursement = (LinearLayout)findViewById(R.id.adddisbursementli);
+        adddisbursement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent itent =new Intent(Activity_Home.this,Outcome.class);
+                startActivity(itent);
+
+            }
+        });
 
     }
 
