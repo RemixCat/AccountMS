@@ -61,6 +61,7 @@ public class Activity_update_note extends AppCompatActivity {
                         flag.setFlag(txt);
                         flag.set_id(tvnoteid);
                         tbdao.update(flag);Toast.makeText(Activity_update_note.this, "保存成功", Toast.LENGTH_SHORT).show();
+                        Activity_update_note.this.finish();
                     }
                 } catch (Exception e) {
                     Toast.makeText(Activity_update_note.this, e.toString(), Toast.LENGTH_LONG).show();
@@ -72,8 +73,8 @@ public class Activity_update_note extends AppCompatActivity {
     private class MyListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent();
-            setResult(RESULT_CODE, intent);
+//            Intent intent = new Intent();
+//            setResult(RESULT_CODE, intent);
             Activity_update_note.this.finish();
         }
     }

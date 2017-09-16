@@ -3,6 +3,7 @@ package com.example.matrix.accountms;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +40,9 @@ public class Activity_note extends Activity {
         listView = (ListView)findViewById(R.id.list_item_none);
 
 
-        flush();
+
+
+
         btn_new_flag = (ImageButton) findViewById(R.id.btn_new_flag);
         btn_new_flag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +52,24 @@ public class Activity_note extends Activity {
             }
         });
 
-        //长安
+
+        //刷新执行
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable(){
+            @Override
+            public void run() {
+                // 在此处添加执行的代码
+                flush();
+                handler.postDelayed(this, 50);// 50是延时时长
+            }
+        };
+        handler.postDelayed(runnable, 50);// 打开定时器，执行操作
+
+
+
+
+
+        //长按
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -93,21 +113,26 @@ public class Activity_note extends Activity {
         listView.setAdapter(myAdapterFlag);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        flush();
-        myAdapterFlag.notifyDataSetChanged();
-        Toast.makeText(Activity_note.this, "", Toast.LENGTH_LONG).show();
-        if (requestCode==REQUEST_CODE)
-        {
-            if (resultCode==Activity_new_note.RESULT_CODE)
-            {
-                //Tb_flag tb_flag = (Tb_flag)data.getSerializableExtra("edit_notetext");
-                String tb_flag = data.getStringExtra("edit_notetext").toString();
-                Toast.makeText(Activity_note.this, tb_flag, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        flush();
+//        myAdapterFlag.notifyDataSetChanged();
+//        Toast.makeText(Activity_note.this, "", Toast.LENGTH_LONG).show();
+//        if (requestCode==REQUEST_CODE)
+//        {
+//            if (resultCode==Activity_new_note.RESULT_CODE)
+//            {
+//                //Tb_flag tb_flag = (Tb_flag)data.getSerializableExtra("edit_notetext");
+//                String tb_flag = data.getStringExtra("edit_notetext").toString();
+//                Toast.makeText(Activity_note.this, tb_flag, Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+
+
+
+
+
 
     private List<Tb_flag> getData(){
         List<Tb_flag> list = new  ArrayList<Tb_flag>();

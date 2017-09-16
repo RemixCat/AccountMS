@@ -61,7 +61,8 @@ public class Activity_new_note extends AppCompatActivity {
                             flag.set_id(1);
                         }
                         tbdao.insertOrReplace(flag);
-                        Toast.makeText(Activity_new_note.this, "保存成功" + txt + " maxid " + maxid, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_new_note.this, "保存成功", Toast.LENGTH_SHORT).show();
+                        Activity_new_note.this.finish();
                     }
                 } catch (Exception e) {
 
