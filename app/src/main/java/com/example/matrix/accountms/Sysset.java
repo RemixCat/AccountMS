@@ -35,13 +35,14 @@ public class Sysset extends Activity {
                 List<Tb_pwd> list = session.loadAll(Tb_pwd.class);
                 if (list.size()>0)//用户存在时直接修改第一条数据密码
                 {
-                    pwd = list.get(0);
-                    pwd.setPassword(txtpwd.getText().toString());
-                    session.update(pwd);
+                     pwd = list.get(0);
+                     pwd.setPassword(txtpwd.getText().toString());
+                     session.update(pwd);
+
                 }
                 else//用户不存在时新建用户，新增数据库数据
                 {
-                    pwd.setPassword(txtpwd.getText().toString());
+                    pwd.setPassword("0");
                     session.insert(pwd);
 
                 }

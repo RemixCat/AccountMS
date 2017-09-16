@@ -3,6 +3,7 @@ package com.example.matrix.accountms;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -111,10 +112,19 @@ public class Activity_note extends Activity {
     private List<Tb_flag> getData(){
         List<Tb_flag> list = new  ArrayList<Tb_flag>();
         List<Tb_flag> tblist = dao.queryBuilder().list();
-        Toast.makeText(Activity_note.this, tblist.size()+"", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Activity_note.this, tblist.size()+"", Toast.LENGTH_SHORT).show();
         for (int i = 0; i < tblist.size(); i++) {
             list.add(tblist.get(i));
         }
         return  list;
     }
+
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
+    }
+
 }

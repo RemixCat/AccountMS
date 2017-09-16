@@ -4,11 +4,14 @@ import android.app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.greenrobot.greendao.annotation.OrderBy;
 
@@ -39,6 +42,9 @@ public class Activity_Home extends Activity {
     private LinearLayout adddisbursementli; //添加支出
     private LinearLayout Controlincomeli;//收入管理
     private LinearLayout Controldisbursementli;//支出管理
+    Home_List_Adapter_note adapternote;
+    Home_List_Adapter_in adapterin;
+    Home_List_Adapter_in adapterout;
 
 
     protected void onResume() {
@@ -58,9 +64,35 @@ public class Activity_Home extends Activity {
         noteData = getnoteData();
         outData = getoutData();
         inData = getinData();
-        Home_List_Adapter_note adapternote = new Home_List_Adapter_note(noteData, Activity_Home.this);   //实例化适配器
-        Home_List_Adapter_in adapterin = new Home_List_Adapter_in(inData, Activity_Home.this);
-        Home_List_Adapter_in adapterout = new Home_List_Adapter_in(outData, Activity_Home.this);
+        adapternote = new Home_List_Adapter_note(noteData, Activity_Home.this);   //实例化适配器
+        adapterin = new Home_List_Adapter_in(inData, Activity_Home.this);
+        adapterout = new Home_List_Adapter_in(outData, Activity_Home.this);
+
+        //刷新执行
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable(){
+            @Override
+            public void run() {
+                // 在此处添加执行的代码
+
+                noteData = getnoteData();
+                outData = getoutData();
+                inData = getinData();
+                adapternote = new Home_List_Adapter_note(noteData, Activity_Home.this);   //实例化适配器
+                adapterin = new Home_List_Adapter_in(inData, Activity_Home.this);
+                adapterout = new Home_List_Adapter_in(outData, Activity_Home.this);
+                note_list.setAdapter(adapternote);//设置适配器
+                in_list.setAdapter(adapterin);
+                out_list.setAdapter(adapterout);
+
+                mony_in.setText(getallin());
+                mony_out.setText(getallout());
+                handler.postDelayed(this, 50);// 50是延时时长
+            }
+        };
+        handler.postDelayed(runnable, 50);// 打开定时器，执行操作
+
+
 
 
         note_list.setAdapter(adapternote);//设置适配器
@@ -299,9 +331,34 @@ public class Activity_Home extends Activity {
 
         }
 
-
-
-
         return list;
+    }
+
+
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            return true;
+//        }
+//        return false;
+//    }
+
+    //记录用户首次点击返回键的时间
+    private long firstTime=0;
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime=System.currentTimeMillis();
+                if(secondTime-firstTime>2000){
+                    Toast.makeText(Activity_Home.this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+                    firstTime=secondTime;
+                    return true;
+                }else{
+                    System.exit(0);
+                }
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }
