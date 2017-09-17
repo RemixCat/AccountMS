@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import entity.DAOManager;
+import entity.DaoMaster;
 import entity.DaoSession;
 import entity.Tb_flag;
 import entity.Tb_pwd;
@@ -26,6 +27,11 @@ public class Activity_Locks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__locks);
+
+        //创建数据库
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "accountms.db", null);
+        DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
+        DaoSession daoSession = daoMaster.newSession();
 
         session = DAOManager.getDaoSession(Activity_Locks.this);
         List<Tb_pwd> tblist  = session.loadAll(Tb_pwd.class);

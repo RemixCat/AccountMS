@@ -132,9 +132,13 @@ public class Outcome extends AppCompatActivity {
                     outcome.insert(tb);
 
                     Outcome.this.finish();
+
+                    Toast.makeText(Outcome.this, "保存成功！", Toast.LENGTH_SHORT)
+                            .show();
                 }
                 catch(Exception ex){
-                    Toast.makeText(Outcome.this, ex.getStackTrace().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Outcome.this, "哈哈系统出错拉！", Toast.LENGTH_SHORT)
+                            .show();
                 }
 
             }

@@ -30,6 +30,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imgaddincome"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/addin"
@@ -81,6 +82,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/imgcont"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/incnt"
@@ -139,7 +141,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="本月账单"
+            android:text="账单"
             android:textColor="@android:color/black" />
 
         <LinearLayout

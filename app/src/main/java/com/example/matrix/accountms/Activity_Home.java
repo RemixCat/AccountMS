@@ -3,13 +3,18 @@ package com.example.matrix.accountms;
 import android.app.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,27 +51,53 @@ public class Activity_Home extends Activity {
     Home_List_Adapter_in adapterin;
     Home_List_Adapter_in adapterout;
 
+    private ImageView imgaddincome;
+    private ImageView imgcont;
 
-    protected void onResume() {
-        super.onResume();
-        onCreate(null);
-    }
+    private GuideView guideView;
+    private GuideView guideView3;
+    private GuideView guideView2;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
         in_list = findViewById(R.id.in_zuijin);
         out_list = findViewById(R.id.out_zuijin);
         note_list = findViewById(R.id.note_zuijin);
         mony_in = findViewById(R.id.mony_in);
         mony_out = findViewById(R.id.mony_out);
+
+        imgaddincome = findViewById(R.id.imgaddincome);
+        imgcont = findViewById(R.id.imgcont);
+
         noteData = getnoteData();
         outData = getoutData();
         inData = getinData();
         adapternote = new Home_List_Adapter_note(noteData, Activity_Home.this);   //实例化适配器
         adapterin = new Home_List_Adapter_in(inData, Activity_Home.this);
         adapterout = new Home_List_Adapter_in(outData, Activity_Home.this);
+
+
+        //判断是否是第一次打开app
+        SharedPreferences setting = getSharedPreferences("hah",0);
+        Boolean user_first = setting.getBoolean("FIRST",true);
+        if(user_first){//第一次
+            setting.edit().putBoolean("FIRST", false).commit();
+            //使用向导
+            setGuideView();
+        }else{
+
+        }
+
+
+        SharedPreferences pref = this.getSharedPreferences("mypref" , MODE_PRIVATE);
+
 
         //刷新执行
         final Handler handler = new Handler();
@@ -333,6 +364,93 @@ public class Activity_Home extends Activity {
 
         return list;
     }
+
+
+    private void setGuideView() {
+
+        // 使用图片
+        final ImageView iv_1 = new ImageView(this);
+        iv_1.setImageResource(R.drawable.icon_help_1);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        iv_1.setLayoutParams(params);
+
+        // 使用图片
+        final ImageView iv_2 = new ImageView(this);
+        iv_2.setImageResource(R.drawable.icon_help_2);
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        iv_2.setLayoutParams(params2);
+
+        // 使用文字
+        TextView tv_1 = new TextView(this);
+        tv_1.setText("这里显示的是收入总和");
+        tv_1.setTextColor(getResources().getColor(R.color.white));
+        tv_1.setTextSize(30);
+        tv_1.setGravity(Gravity.CENTER);
+
+
+        guideView = GuideView.Builder
+                .newInstance(this)
+                .setTargetView(imgaddincome)//设置目标
+                .setCustomGuideView(iv_1)
+                .setDirction(GuideView.Direction.BOTTOM)
+                .setShape(GuideView.MyShape.CIRCULAR)   // 设置圆形显示区域，
+                .setRadius(200)          // 设置圆形或矩形透明区域半径，默认是targetView的显示矩形的半径，如果是矩形，这里是设置矩形圆角大小
+                .setBgColor(getResources().getColor(R.color.shadow))
+                .setOnclickListener(new GuideView.OnClickCallback() {
+                    @Override
+                    public void onClickedGuideView() {
+                        guideView.hide();
+                        guideView2.show();
+                    }
+                })
+                .build();
+
+
+        guideView2 = GuideView.Builder
+                .newInstance(this)
+                .setTargetView(imgcont)
+                .setCustomGuideView(iv_2)
+                .setDirction(GuideView.Direction.BOTTOM)
+                .setShape(GuideView.MyShape.CIRCULAR)   // 设置圆形显示区域，
+                .setRadius(200)          // 设置圆形或矩形透明区域半径，默认是targetView的显示矩形的半径，如果是矩形，这里是设置矩形圆角大小
+                .setBgColor(getResources().getColor(R.color.shadow))
+                .setOnclickListener(new GuideView.OnClickCallback() {
+                    @Override
+                    public void onClickedGuideView() {
+                        guideView2.hide();
+                        guideView3.show();
+                    }
+                })
+                .build();
+
+
+        guideView3 = GuideView.Builder
+                .newInstance(this)
+                .setTargetView(mony_in)
+                .setCustomGuideView(tv_1)
+                .setDirction(GuideView.Direction.BOTTOM)
+                .setShape(GuideView.MyShape.CIRCULAR)   // 设置矩形显示区域，
+                .setRadius(160)          // 设置圆形或矩形透明区域半径，默认是targetView的显示矩形的半径，如果是矩形，这里是设置矩形圆角大小
+                .setBgColor(getResources().getColor(R.color.shadow))
+                .setOnclickListener(new GuideView.OnClickCallback() {
+                    @Override
+                    public void onClickedGuideView() {
+                        guideView3.hide();
+                        Toast.makeText(Activity_Home.this, "可在帮助再次查看向导，使用愉快～", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build();
+
+        guideView.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+
 
 
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {

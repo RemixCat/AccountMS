@@ -62,6 +62,8 @@ public class Activity_update_note extends AppCompatActivity {
                         flag.set_id(tvnoteid);
                         tbdao.update(flag);Toast.makeText(Activity_update_note.this, "保存成功", Toast.LENGTH_SHORT).show();
                         Activity_update_note.this.finish();
+                        Intent itent =new Intent(Activity_update_note.this,MainActivity.class);
+                        startActivity(itent);
                     }
                 } catch (Exception e) {
                     Toast.makeText(Activity_update_note.this, e.toString(), Toast.LENGTH_LONG).show();

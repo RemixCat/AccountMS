@@ -137,9 +137,14 @@ public class Income extends AppCompatActivity {
                     tb.setMark(remark.getText().toString());
                     income.insert(tb);
                     Income.this.finish();
+
+                    Toast.makeText(Income.this, "保存成功！", Toast.LENGTH_SHORT)
+                            .show();
+
                 }
                 catch(Exception ex){
-                    showT(ex.getStackTrace().toString());
+                    Toast.makeText(Income.this, "哈哈系统出错拉！", Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
         });

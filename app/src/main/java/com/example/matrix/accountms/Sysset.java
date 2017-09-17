@@ -1,6 +1,7 @@
 package com.example.matrix.accountms;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,13 +43,15 @@ public class Sysset extends Activity {
                 }
                 else//用户不存在时新建用户，新增数据库数据
                 {
-                    pwd.setPassword("0");
+                    pwd.setPassword("");
                     session.insert(pwd);
 
                 }
                 Toast.makeText(Sysset.this, "〖密码〗设置成功！", Toast.LENGTH_SHORT)
                         .show();
 
+                Intent itent =new Intent(Sysset.this,Activity_Home.class);
+                startActivity(itent);
 
             }
         });
