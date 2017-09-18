@@ -80,7 +80,7 @@ public class Outcome extends AppCompatActivity {
         picker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-                out_time.setText(i+":"+ (i1+1) +":"+i2);
+                out_time.setText(i+"-"+ (i1+1) +"-"+i2);
                 out_time.setGravity(Gravity.CENTER);
                 dialog.cancel();
             }
@@ -125,7 +125,7 @@ public class Outcome extends AppCompatActivity {
 
                     tb = new Tb_outaccount();
                     tb.setMoney(Double.valueOf(out_money.getText().toString()));
-                    tb.setTime(out_time.getText().toString());
+                    tb.setTime(out_time.getText().toString().trim());
                     tb.setType(out_typestr);
                     tb.setAddress(out_address.getText().toString());
                     tb.setMark(out_remark.getText().toString());

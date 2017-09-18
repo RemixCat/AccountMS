@@ -50,7 +50,7 @@ public class Sysset extends Activity {
                 Toast.makeText(Sysset.this, "〖密码〗设置成功！", Toast.LENGTH_SHORT)
                         .show();
 
-                Intent itent =new Intent(Sysset.this,Activity_Home.class);
+                Intent itent =new Intent(Sysset.this,MainActivity.class);
                 startActivity(itent);
 
             }

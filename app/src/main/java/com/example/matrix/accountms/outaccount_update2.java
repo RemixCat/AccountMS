@@ -106,12 +106,19 @@ public class outaccount_update2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Calendar calendar1 = Calendar.getInstance();
-                calendar1.setTime(StrToDate(tb.getTime()));
+                try {
+                    Calendar calendar1 = Calendar.getInstance();
+                    calendar1.setTime(StrToDate(tb.getTime()));
 
 
-                //Toast.makeText(update_income2.this,calendar1.get(Calendar.YEAR)+"",Toast.LENGTH_SHORT).show();
-                dialog(v,calendar1.get(Calendar.YEAR),calendar1.get(Calendar.MONTH),calendar1.get(Calendar.DAY_OF_MONTH));
+                    //Toast.makeText(update_income2.this,calendar1.get(Calendar.YEAR)+"",Toast.LENGTH_SHORT).show();
+                    dialog(v, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
+                }
+                catch (Exception e)
+                {
+
+                    Toast.makeText(outaccount_update2.this,e.toString(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -190,7 +197,7 @@ public class outaccount_update2 extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = format.parse(str);
+            date = format.parse(str.trim());
         } catch (ParseException e) {
             e.printStackTrace();
         }

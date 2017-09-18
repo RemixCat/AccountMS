@@ -111,12 +111,24 @@ public class update_income2 extends Activity {
             @Override
             public void onClick(View v) {
 
-                Calendar calendar1 = Calendar.getInstance();
-                calendar1.setTime(StrToDate(tb.getTime()));
+                try {
+                    Calendar calendar1 = Calendar.getInstance();
+                    calendar1.setTime(StrToDate(tb.getTime().trim()));
+
+                    dialog(v, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
+                }
+                catch (Exception e)
+                {
+
+                    Toast.makeText(update_income2.this, e.toString(), Toast.LENGTH_LONG).show();
+
+                }
+                    //Toast.makeText(update_income2.this,calendar1.get(Calendar.YEAR)+"",Toast.LENGTH_SHORT).show();
 
 
-                //Toast.makeText(update_income2.this,calendar1.get(Calendar.YEAR)+"",Toast.LENGTH_SHORT).show();
-                dialog(v,calendar1.get(Calendar.YEAR),calendar1.get(Calendar.MONTH),calendar1.get(Calendar.DAY_OF_MONTH));
+
+
+
             }
         });
 
@@ -195,7 +207,7 @@ public class update_income2 extends Activity {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = format.parse(str);
+            date = format.parse(str.trim());
         } catch (ParseException e) {
             e.printStackTrace();
         }
