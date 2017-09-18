@@ -54,40 +54,41 @@ public class Activity_Locks extends AppCompatActivity {
 
             }
 
+
+            pwd = tblist.get(0).getPassword();
+
+
+            lockbtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    String txpwd = pwdtext.getText().toString();
+                    if(txpwd.equals(pwd)){
+
+                        Toast.makeText(Activity_Locks.this, "密码正确", Toast.LENGTH_SHORT)
+                                .show();
+
+                        Intent itent =new Intent(Activity_Locks.this,MainActivity.class);
+                        startActivity(itent);
+
+                    }
+                    else {
+
+                        Toast.makeText(Activity_Locks.this, "密码错误", Toast.LENGTH_SHORT)
+                                .show();
+
+                    }
+
+                }
+            });
+
+
+
         }
 
 
-        pwd = tblist.get(0).getPassword();
 
-
-        lockbtn.setOnClickListener(new View.OnClickListener() {
-
-
-
-
-
-            @Override
-            public void onClick(View view) {
-
-                String txpwd = pwdtext.getText().toString();
-                if(txpwd.equals(pwd)){
-
-                    Toast.makeText(Activity_Locks.this, "密码正确", Toast.LENGTH_SHORT)
-                            .show();
-
-                    Intent itent =new Intent(Activity_Locks.this,MainActivity.class);
-                    startActivity(itent);
-
-                }
-                else {
-
-                    Toast.makeText(Activity_Locks.this, "密码错误", Toast.LENGTH_SHORT)
-                            .show();
-
-                }
-
-            }
-        });
 
 
 
